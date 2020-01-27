@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
     Widget titleSection = Container(
       padding: const EdgeInsets.all(16),
       child: Row(
-        children:[
+        children: [
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -19,16 +19,12 @@ class MyApp extends StatelessWidget {
                   padding: const EdgeInsets.only(bottom: 8),
                   child: Text(
                     'Oeschinen Lake Campground',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold
-                    ),
+                    style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
                 Text(
                   'Kandersteg, Switzerland',
-                  style: TextStyle(
-                    color: Colors.grey[500]
-                  ),
+                  style: TextStyle(color: Colors.grey[500]),
                 )
               ],
             ),
@@ -43,6 +39,23 @@ class MyApp extends StatelessWidget {
     );
     //#enddoregion titleSection
 
+    //#docregion buttonSection
+
+    Color color = Theme.of(context).primaryColor;
+
+    Widget buttonSection = Container(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>[
+          _buildButtonColumn(color, Icons.call, 'CALL'),
+          _buildButtonColumn(color, Icons.near_me, 'ROUTE'),
+          _buildButtonColumn(color, Icons.share, 'SHARE')
+        ],
+      ),
+    );
+
+    //#enddoregion buttonSection
+
     return MaterialApp(
       title: 'Flutter layout',
       home: Scaffold(
@@ -51,13 +64,32 @@ class MyApp extends StatelessWidget {
         ),
         body: Column(
           children: <Widget>[
-            titleSection
+            titleSection,
+            buttonSection
           ],
         ),
       ),
+    );
+  }
 
+  Column _buildButtonColumn(Color color, IconData icon, String label) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Icon(icon, color: color),
+        Container(
+          margin: const EdgeInsets.only(top: 8),
+          child: Text(
+            label,
+            style: TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.w400,
+              color: color,
+            ),
+          ),
+        )
+      ],
     );
   }
 }
-
-
