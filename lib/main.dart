@@ -6,7 +6,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    //#docregion titleSection
+    // #docregion titleSection
     Widget titleSection = Container(
       padding: const EdgeInsets.all(16),
       child: Row(
@@ -37,11 +37,13 @@ class MyApp extends StatelessWidget {
         ],
       ),
     );
-    //#enddoregion titleSection
+    // #enddoregion titleSection
 
-    //#docregion buttonSection
+    // #docregion buttonSection
 
-    Color color = Theme.of(context).primaryColor;
+    Color color = Theme
+        .of(context)
+        .primaryColor;
 
     Widget buttonSection = Container(
       child: Row(
@@ -54,7 +56,22 @@ class MyApp extends StatelessWidget {
       ),
     );
 
-    //#enddoregion buttonSection
+    // #enddoregion buttonSection
+
+    // #docregion textSection
+    Widget textSection = Container(
+      padding: const EdgeInsets.all(32),
+      child: Text(
+        'Lake Oeschinen lies at the foot of the Blüemlisalp in the Bernese '
+            'Alps. Situated 1,578 meters above sea level, it is one of the '
+            'larger Alpine Lakes. A gondola ride from Kandersteg, followed by a '
+            'half-hour walk through pastures and pine forest, leads you to the '
+            'lake, which warms to 20 degrees Celsius in the summer. Activities '
+            'enjoyed here include rowing, and riding the summer toboggan run.',
+        softWrap: true,
+      ),
+    );
+    // #endregion textSection
 
     return MaterialApp(
       title: 'Flutter layout',
@@ -64,9 +81,13 @@ class MyApp extends StatelessWidget {
         ),
         body: Column(
           children: <Widget>[
-            titleSection,
-            buttonSection
-          ],
+            Image.asset(
+              'images/lake.jpg',
+              width: 600,
+              height: 240,
+              fit: BoxFit.cover,
+            ),
+            titleSection, buttonSection, textSection],
         ),
       ),
     );
